@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv');
@@ -13,6 +14,12 @@ mongoose.connect(process.env.DB_URL).then(() => {
 }).catch(err => {
     console.log(`Error connecting to DB ${err}`)
 })
+
+// Cors configuration
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}))
 
 // Allowing req.body to show data
 app.use(bodyParser.json())
