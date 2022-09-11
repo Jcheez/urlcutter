@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE = process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT
+const BASE = process.env.REACT_APP_BACKEND
 console.log(BASE)
 export const postURLshortcut = async (urlData) => {
     const promise = axios.post(BASE + "/generate", urlData)

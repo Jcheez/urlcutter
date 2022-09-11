@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+ENV REACT_APP_BACKEND urlcutter-backend:4000
+
 EXPOSE 3000
 
 CMD ["npm", "start"]
