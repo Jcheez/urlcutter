@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-ENV REACT_APP_BACKEND urlcutter-backend:4000
+ENV REACT_APP_BACKEND http://127.0.0.1:4000
 
 EXPOSE 3000
 
