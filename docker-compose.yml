@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:4.4.16-focal
+    ports:
+      - "27017:27017"
+  urlcutter-backend:
+    build: ./backend
+    links: 
+      - mongo
+    depends_on:
+      - mongo
+    ports:
+      - "4000:4000"
+  urlcutter-frontend:
+    build: ./urlcutter
+    links:
+      - urlcutter-backend
+      - mongo
+    depends_on:
+      - urlcutter-backend
+    environment:
+      REACT_APP_BACKEND_HOST: urlcutter-backend
+      REACT_APP_BACKEND_PORT: 4000
+    ports:
+      - "3000:3000"
