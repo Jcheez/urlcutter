@@ -35,8 +35,8 @@ const getShortcut = async (req, res) => {
         })
     } else {
         res.status(404).json({
-            error: "Shortcut is invalid",
-            status: 400
+            redirect: "/error",
+            status: 404
         })
     }
 }
