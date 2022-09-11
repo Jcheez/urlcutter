@@ -51,8 +51,10 @@ export default function UrlShortcutForm() {
     if (promise.status === 200) {
       addToLocalStorage(original, shortcut)
       document.getElementById("success").hidden = false
-    } else {
+    } else if (promise.status === 400) {
       document.getElementById("error").innerHTML = "Shortcut has already been used"
+    } else {
+      document.getElementById("error").innerHTML = "Unknown error occurred"
     }
   }
 
