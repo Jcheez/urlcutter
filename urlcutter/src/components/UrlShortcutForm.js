@@ -62,7 +62,7 @@ export default function UrlShortcutForm() {
     <Box>
       <Typography>Enter a link you wish to shorten</Typography>
       <TextField onChange={handleOriginalChange} sx={{width: "300px"}}/>
-      <Typography>Shorten your link: {window.location.origin}/{shortcut}</Typography>
+      <Typography>Shortcut Token</Typography>
       <TextField placeholder="shortcut" onChange={handleShortCutChange} sx={{width: "300px"}}/>
       <br />
       <p id='error'></p>
