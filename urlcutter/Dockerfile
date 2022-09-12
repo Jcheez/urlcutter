@@ -10,7 +10,7 @@ RUN npm install -g serve
 
 COPY . .
 
-ENV REACT_APP_BACKEND http://localhost:4000
+ENV REACT_APP_BACKEND http://localhost:4000/api
 
 RUN npm run build
 

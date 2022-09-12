@@ -8,10 +8,12 @@ export default function UrlShortcutForm() {
   const [shortcut, setShortCut] = useState("")
 
   const handleOriginalChange = event => {
+    document.getElementById("success").hidden = true
     setOriginal(event.target.value)
   }
 
   const handleShortCutChange = event => {
+    document.getElementById("success").hidden = true
     setShortCut(event.target.value)
   }
 
@@ -41,15 +43,17 @@ export default function UrlShortcutForm() {
     if (!isValidURL(original)) {
       document.getElementById("error").innerHTML = "URL is not valid"
       return
-    } else if (shortcut.length === 0) {
+    } else if (shortcut.replaceAll(" ", "").length === 0) {
       document.getElementById("error").innerHTML = "Shortcut is not valid"
       return
     }
 
     document.getElementById("error").innerHTML = ""
-    const promise = await postURLshortcut({original: original, shortcut: shortcut})
+    const promise = await postURLshortcut({original: original, shortcut: shortcut.replaceAll(" ", "")})
     if (promise.status === 200) {
-      addToLocalStorage(original, shortcut)
+      addToLocalStorage(original, shortcut.replaceAll(" ", ""))
+      let newShortcut = shortcut
+      setShortCut(newShortcut.replaceAll(" ", ""))
       document.getElementById("success").hidden = false
     } else if (promise.status === 400) {
       document.getElementById("error").innerHTML = "Shortcut has already been used"

@@ -25,7 +25,7 @@ app.use(cors({
 app.use(bodyParser.json())
 
 //Initialising Routes
-app.use(require('./src/routes/shortcutRoute'))
+app.use("/api", require('./src/routes/shortcutRoute'))
 
 // Code to start the server
 app.listen(PORT, (error) => {
