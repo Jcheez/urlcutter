@@ -10,8 +10,8 @@ URLcutter is a self-host URL shortener that allows you to shorten long and compl
 
 ## Requirements
 
-- Docker
-- docker-compose
+- [Docker](https://docs.docker.com/engine/install/)
+- [docker-compose](https://docs.docker.com/compose/install/)
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from '@mui/material'
+import { Button, Link, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import { postURLshortcut } from '../apis/urlShortcut'
@@ -64,14 +64,16 @@ export default function UrlShortcutForm() {
 
   return (
     <Box>
-      <Typography>Enter a link you wish to shorten</Typography>
-      <TextField onChange={handleOriginalChange} sx={{width: "300px"}}/>
-      <Typography>Shortcut Token</Typography>
-      <TextField placeholder="shortcut" onChange={handleShortCutChange} sx={{width: "300px"}}/>
+      <TextField placeholder="Link to Shorten" onChange={handleOriginalChange} sx={{width: "500px"}}/>
       <br />
-      <p id='error'></p>
-      <Button variant='contained' onClick={onSubmit} sx={{width: "300px"}}>Make a Shortcut!</Button>
-      <p id='success' hidden>Shortcut created! U can use {window.location.href}{shortcut} instead of the original link</p>
+      <br />
+      <TextField placeholder="Shortcut" onChange={handleShortCutChange} sx={{width: "500px"}}/>
+      <br />
+      <p id='error' style={{color: 'red'}}></p>
+      <Button variant='contained' onClick={onSubmit} sx={{width: "400px"}} size='large'>Make a Shortcut!</Button>
+      <p id='success' hidden>
+        Shortcut created! U can use <Link href={window.location.href + shortcut}> {window.location.href}{shortcut}</Link> instead of the original link
+      </p>
     </Box>
   )
 }
