@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:4.4.16-focal
+    ports:
+      - "27017:27017"
+  urlcutter-backend:
+    build: ./backend
+    links: 
+      - mongo
+    depends_on:
+      - mongo
+    ports:
+      - "4000:4000"
+  urlcutter-frontend:
+    build:
+      context: urlcutter
+      dockerfile: ./Dockerfile.prod
+    links:
+      - urlcutter-backend
+      - mongo
+    depends_on:
+      - urlcutter-backend
+    ports:
+      - "3000:3000"
