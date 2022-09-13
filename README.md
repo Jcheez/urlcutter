@@ -20,6 +20,11 @@ URLcutter is a self-host URL shortener that allows you to shorten long and compl
 - Run the following code `docker-compose up --build`
 - Open up `localhost:3000` to start using the application!
 
+## Online Deployment
+
+- Deployed on AWS EC2 Instance
+- Access by: http://35.154.59.42/
+
 ## Tech Stack
 - Frontend: React JS
 - Backend: Express JS
