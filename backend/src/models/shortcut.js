@@ -10,6 +10,11 @@ const ShortcutSchema = new Schema({
     original: {
         type: String,
         required: true
+    },
+
+    numUsed: {
+        type: Number,
+        required: true
     }
 })
 

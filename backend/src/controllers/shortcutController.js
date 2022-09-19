@@ -14,7 +14,8 @@ const addShortcut = async (req, res) => {
     } else {
         Shortcut.create({
             shortcut: shortcut,
-            original: original
+            original: original,
+            numUsed: 0
         }).then(
             res.status(200).json({
                 newlink: "localhost:4000/" + shortcut,
@@ -28,10 +29,20 @@ const getShortcut = async (req, res) => {
     const shortcut = req.params.shortcut
     const Short = await Shortcut.findOne({shortcut: shortcut})
 
-    if (Short) {
+    if (Short && Short.numUsed < 3) {
+        await Shortcut.findOneAndUpdate({
+            shortcut:Short.shortcut,
+            original:Short.original,
+            numUsed: Short.numUsed + 1
+        })
         res.status(200).json({
             redirect: Short.original,
             status: 200
+        })
+    } else if (Short && Short.numUsed >= 3) {
+        res.status(400).json({
+            redirect: "/expired",
+            status: 400
         })
     } else {
         res.status(404).json({

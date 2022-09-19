@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import HistoryPage from "./pages/HistoryPage";
 import ErrorPage from "./pages/ErrorPage";
 import RedirectPage from "./pages/RedirectPage";
+import ExpiredPage from "./pages/ExpiredPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />}/>
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/error" element={<ErrorPage />} />
+          <Route path="/expired" element={<ExpiredPage />} />
           <Route path="/:shortcut" element={<RedirectPage />} />
         </Routes>
       </BrowserRouter>

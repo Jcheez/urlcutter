@@ -9,13 +9,9 @@ export default function RedirectPage() {
     
     useEffect(() => {
         redirector(shortcut).then(res => {
-            if (res.status === 200) {
-                window.location.href = res.redirect
-                return null
-            }
-            window.location.href = window.location.origin + "/error"
+            window.location.href = res.redirect
         })
-    }, [shortcut])
+    })
 
     const redirector = (shortcut) => {
         const promise = getOriginalURL(shortcut)
